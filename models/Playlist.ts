@@ -4,9 +4,9 @@ import ObjectId = module;
 import * as module from "node:module";
 
 const PlaylistSchema: Schema<PlaylistDocument> = new Schema({
-  movies: [{ type: ObjectId, ref: "Movie" }],
+  movies: [{ type: Schema.Types.ObjectId, ref: "Movie" }],
   name: { type: String, required: true },
-  user: { type: ObjectId, ref: "User", required: true },
+  user: { type: Schema.Types.ObjectId, ref: "User", required: true },
 });
 
 PlaylistSchema.statics.createPlaylist = async function (

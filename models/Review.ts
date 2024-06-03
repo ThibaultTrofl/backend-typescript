@@ -5,9 +5,9 @@ import * as module from "node:module";
 
 const ReviewSchema: Schema<ReviewDocument> = new Schema({
   comment: String,
-  movie: { type: ObjectId, ref: "Movie", required: true },
+  movie: { type: Schema.Types.ObjectId, ref: "Movie", required: true },
   rating: { type: Number, min: 1, max: 10 },
-  user: { type: ObjectId, ref: "User", required: true },
+  user: { type: Schema.Types.ObjectId, ref: "User", required: true },
 });
 
 ReviewSchema.statics.createReview = async function (
