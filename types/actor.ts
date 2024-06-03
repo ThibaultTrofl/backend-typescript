@@ -9,6 +9,6 @@ export interface Actor {
 export interface ActorDocument extends Actor, Document {}
 
 export interface ActorModel extends Model<ActorDocument> {
-  createActor(args: ActorDocument): Promise<ActorDocument>;
-  updateActor(id: string, arg: Partial<ActorDocument>): Promise<ActorDocument>;
+  createActor(args: Actor): Promise<ActorDocument>;
+  updateActor(id: string, arg: Partial<Actor>): Promise<ActorDocument>;
 }

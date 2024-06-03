@@ -7,6 +7,12 @@ const UserSchema: Schema<UserDocument> = new Schema({
   password: { type: String, required: true },
 });
 
+UserSchema.statics.createUser = async function (
+  args: UserDocument,
+): Promise<UserDocument> {
+  return this.create(args);
+};
+
 UserSchema.statics.deleteUser = async function (id: string): Promise<void> {
   return this.findByIdAndDelete(id);
 };

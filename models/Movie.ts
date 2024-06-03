@@ -1,14 +1,12 @@
 import { model, Schema, Types } from "mongoose";
-import Genres from "./User";
-import ObjectId = module;
-import * as module from "node:module";
+import { Genres } from "../types/movie";
 import { MovieDocument, MovieModel } from "../types/movie";
 
-const MovieSchema: Schema<MovieDocument> = new Schema({
-  actors: [{ type: ObjectId, ref: "Actor" }],
+const MovieSchema: Schema<MovieDocument> = new Schema<MovieDocument>({
+  actors: [{ type: Schema.Types.ObjectId, ref: "Actor" }],
   description: String,
   duration: Number,
-  genres: [{ type: Genres, required: true }],
+  genres: [{ type: [String], enum: Object.values(Genres), required: true }],
   release: Date,
   title: { type: String, required: true },
 });

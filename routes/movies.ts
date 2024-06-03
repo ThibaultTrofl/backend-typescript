@@ -1,11 +1,10 @@
-import express from "express";
+import express, { Request, Response } from "express";
 import Movie from "../models/Movie";
-import Genres from "../models/User";
 import { MovieDocument } from "../types/movie";
 
 export const movieRouter = express.Router();
 
-movieRouter.post("/", async (req, res) => {
+movieRouter.post("/", async (req: Request, res: Response) => {
   try {
     const { actors, description, duration, genres, release, title } = req.body;
     const newMovie: MovieDocument = await Movie.createMovie({
@@ -19,11 +18,11 @@ movieRouter.post("/", async (req, res) => {
     res.status(200).json(newMovie);
   } catch (e) {
     console.error(e);
-    res.status(500).send("Error occured");
+    res.status(500).send("An error occured");
   }
 });
 
-movieRouter.patch("/:id", async (req, res) => {
+movieRouter.patch("/:id", async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
     const { actors, description, duration, genres, release, title } = req.body;

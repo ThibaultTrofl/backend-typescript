@@ -1,4 +1,4 @@
-import express, { Application, Request, Response } from "express";
+import express, { Request, Response } from "express";
 import { movieRouter } from "./routes/movies";
 import { userRouter } from "./routes/users";
 import { playlistRouter } from "./routes/playlists";
@@ -7,7 +7,9 @@ import { reviewRouter } from "./routes/reviews";
 import { envVariables } from "./envVariables";
 import { connectDB } from "./connectDB";
 
-const app: Application = express();
+const app = express();
+
+app.use(express.json());
 
 app.use("/movie", movieRouter);
 app.use("/user", userRouter);

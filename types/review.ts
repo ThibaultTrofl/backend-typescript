@@ -11,10 +11,10 @@ export interface Review {
 export interface ReviewDocument extends Review, Document {}
 
 export interface ReviewModel extends Model<ReviewDocument> {
-  createReview(args: ReviewModel): Promise<ReviewDocument>;
+  createReview(args: Review): Promise<ReviewDocument>;
   updateReview(
     id: string,
-    updatedFields: Partial<ReviewModel>,
+    updatedFields: Partial<Review>,
   ): Promise<ReviewDocument>;
   deleteReview(id: string): Promise<void>;
 }
